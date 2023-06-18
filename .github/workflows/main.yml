@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy-job:
@@ -18,7 +18,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          echo -e "Host $EC2_INSTANCE_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+          echo -e "StrictHostKeyChecking no\n" >> ~/.ssh/config
 
       - name: Deploy to EC2
         run: |
